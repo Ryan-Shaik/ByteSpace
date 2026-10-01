@@ -15,6 +15,7 @@
   --color-surface: #ffffff;
   --color-surface-muted: #f4f4f6;
   --color-surface-input: #f9fafb;
+  --color-surface-overlay: rgba(246, 246, 246, 0.6); /* #F6F6F699 from Figma */
 
   /* Borders */
   --color-border: #e5e7eb;
@@ -24,6 +25,7 @@
   --color-text-primary: #1a1a1a;
   --color-text-secondary: #4b5563;
   --color-text-muted: #6b7280;
+  --color-text-pill: #4f4f4f; /* Figma overlay pill text */
   --color-on-brand: #ffffff;
   --color-on-accent: #1a1a1a;
   --color-link: #0038e0;

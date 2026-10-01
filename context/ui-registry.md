@@ -105,8 +105,8 @@ remove it from this list and add its entry under **Components**.
 
 - [ ] HomeHero (search, floating stat cards, imagery)
 - [ ] PartnerStrip
-- [ ] FeaturedCourses (category chips + 6 cards)
-- [ ] LearningPaths (category tiles)
+- [x] FeaturedCourses (category chips + 6 cards)
+- [x] LearningPaths (category tiles)
 - [ ] GrowthSection (stats: students, courses, creators)
 - [ ] CreatorPromo ("Create & Manage Courses Easily")
 - [ ] CreatorCta ("Unlock Your Potential as a Creator")
@@ -114,7 +114,7 @@ remove it from this list and add its entry under **Components**.
 
 ### Courses (`src/components/features/courses`)
 
-- [ ] CourseCard
+- [x] CourseCard
 - [ ] CourseGrid
 - [ ] CourseSearchBar (input + Courses dropdown)
 - [ ] FilterBar (Filter, Level, Category, sort)
@@ -152,5 +152,73 @@ remove it from this list and add its entry under **Components**.
 
 ## Components
 
-No components built yet. Entries are added here as each component is
-completed.
+### CourseCard
+
+File: `app/components/ui/CourseCard.tsx`
+Last updated: 2026-10-01
+Type: server
+Used on: `/`, `/courses`, `/creators/[slug]`
+
+| Property         | Class |
+| ---------------- | ----- |
+| Background       | `bg-surface`, overlay pills: `bg-surface-overlay` (`rgba(246, 246, 246, 0.6)` #F6F6F699) with `backdrop-blur-[8px]` |
+| Border           | `border border-border hover:border-border-strong` |
+| Border radius    | Card: `rounded-card` (16px), media: `rounded-media` (12px), overlay pills/level badge: `rounded-pill` |
+| Text — primary   | `text-text-primary`, price: `text-link` |
+| Text — secondary | `text-text-muted`, `text-text-secondary`, overlay pills: `text-text-pill` (`#4F4F4F`) |
+| Spacing          | Card: `p-3.5`, gap-1 overlay, mt-3.5 title row, mt-4 meta row, mt-3.5 pt-3 price border |
+| Hover state      | `hover:shadow-md hover:border-border-strong`, image: `group-hover:scale-105` |
+| Shadow           | Card hover: `hover:shadow-md`, overlay pills: `shadow-xs` |
+| Accent usage     | Lime badge `bg-accent text-on-accent` for `26+` student counter |
+
+**Props:** `course: Course`
+**Pattern notes:**
+- Exact Figma specification applied: overlay pills use `bg-surface-overlay` (#F6F6F699), blur 8px (`backdrop-blur-[8px]`), and text `#4F4F4F` (`text-text-pill`).
+- Level badge uses Lucide React's `BarChart` (`ChartNoAxesColumnIncreasing`) with `strokeWidth={2.8}` for 3 solid ascending rounded vertical bars matching the Figma cellular signal design.
+- Full-card click target overlays with `absolute inset-0 z-0` while creator link uses `relative z-10 hover:underline` to avoid nested anchors.
+
+### FeaturedCoursesSection
+
+File: `app/components/home/FeaturedCoursesSection.tsx`
+Last updated: 2026-10-01
+Type: client
+Used on: `/`
+
+| Property         | Class |
+| ---------------- | ----- |
+| Background       | `bg-surface`, chip inactive: `bg-surface-muted`, chip active: `bg-accent` |
+| Border           | None on chips; grid cards use `CourseCard` border |
+| Border radius    | Chips: `rounded-pill` |
+| Text — primary   | `text-text-primary` |
+| Text — secondary | `text-text-muted`, chip active: `text-on-accent`, "+ More": `text-link` |
+| Spacing          | Section: `py-16 md:py-24`, gap-2.5 wrap on chips, grid: `gap-6 mt-12` |
+| Hover state      | Chips: `hover:bg-border/60 hover:text-text-primary`, "+ More": `hover:underline` |
+| Shadow           | Active chip: `shadow-xs` |
+| Accent usage     | Active category chip: `bg-accent text-on-accent font-semibold` |
+
+**Props:** `initialCourses: Course[], allCourses: Course[], filterChips: string[]`
+**Pattern notes:**
+- Handles client-side category filtering with "Featured" default. Displays 6 course cards in 3-column grid (`sm:grid-cols-2 lg:grid-cols-3`).
+
+### LearningPathsSection
+
+File: `app/components/home/LearningPathsSection.tsx`
+Last updated: 2026-10-01
+Type: server
+Used on: `/`
+
+| Property         | Class |
+| ---------------- | ----- |
+| Background       | `bg-surface`, category tile: `bg-surface`, icon container: `bg-accent` |
+| Border           | Tile: `border border-border hover:border-brand/40` |
+| Border radius    | Tile: `rounded-2xl`, icon container: `rounded-full` |
+| Text — primary   | `text-text-primary group-hover:text-brand` |
+| Text — secondary | `text-text-muted` |
+| Spacing          | Section: `py-16 md:py-24`, grid: `gap-4 md:gap-5 mt-10`, tile: `p-6` |
+| Hover state      | Tile: `hover:-translate-y-1 hover:border-brand/40 hover:shadow-md`, icon container: `group-hover:scale-110` |
+| Shadow           | Tile hover: `hover:shadow-md`, icon container: `shadow-xs` |
+| Accent usage     | Circular icon badge: `bg-accent text-on-accent` |
+
+**Props:** `categories: Category[]`
+**Pattern notes:**
+- 6 curated learning path cards (Design, Development, IT & Software, Business, Marketing, Photography) linking to `/courses?category=[slug]`. Responsive across 2 cols (mobile), 3 cols (tablet), 6 cols (desktop).

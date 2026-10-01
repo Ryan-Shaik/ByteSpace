@@ -60,6 +60,7 @@ className="bg-blue-700 text-gray-600"
   --color-surface: #ffffff;
   --color-surface-muted: #f4f4f6; /* partner strip, inactive chips/tabs */
   --color-surface-input: #f9fafb; /* auth form inputs */
+  --color-surface-overlay: rgba(246, 246, 246, 0.6); /* course card image overlay pills (#F6F6F699) */
 
   /* Borders */
   --color-border: #e5e7eb;
@@ -69,6 +70,7 @@ className="bg-blue-700 text-gray-600"
   --color-text-primary: #1a1a1a;
   --color-text-secondary: #4b5563; /* body paragraphs */
   --color-text-muted: #6b7280; /* meta, placeholders, "1 year ago" */
+  --color-text-pill: #4f4f4f; /* course card overlay pills */
   --color-on-brand: #ffffff; /* text on blue */
   --color-on-accent: #1a1a1a; /* text on lime */
   --color-link: #0038e0;
