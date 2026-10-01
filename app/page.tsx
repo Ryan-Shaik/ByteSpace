@@ -5,11 +5,13 @@ import LearningPathsSection from "./components/home/LearningPathsSection";
 import GrowthAndCreatorSection from "@/app/components/home/GrowthAndCreatorSection";
 import CreatorCtaSection from "@/app/components/home/CreatorCtaSection";
 import TestimonialsSection from "@/app/components/home/TestimonialsSection";
+import Footer from "@/app/components/layout/Footer";
 import { getFeaturedCourses, getAllCourses } from "@/src/lib/courses";
 import { getCategoryFilterChips, getCategories } from "@/src/lib/categories";
 import { getPlatformStats, getCreatorBenefits } from "@/src/lib/platform";
 import { getCreatorCta } from "@/src/lib/cta";
 import { getTestimonialsContent } from "@/src/lib/testimonials";
+import { getFooterContent } from "@/src/lib/footer";
 
 export default function HomePage() {
   const featuredCourses = getFeaturedCourses();
@@ -20,9 +22,11 @@ export default function HomePage() {
   const creatorBenefits = getCreatorBenefits();
   const creatorCta = getCreatorCta();
   const testimonialsContent = getTestimonialsContent();
+  const footerContent = getFooterContent();
 
   return (
-    <main>
+    <>
+      <main>
       <HeroSection />
       <PartnerStrip />
       <FeaturedCoursesSection
@@ -39,5 +43,7 @@ export default function HomePage() {
       <CreatorCtaSection cta={creatorCta} />
       <TestimonialsSection content={testimonialsContent} />
     </main>
+    <Footer content={footerContent} />
+    </>
   );
 }

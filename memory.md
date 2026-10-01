@@ -1,50 +1,75 @@
-# Memory — Home Page Category Chips, Featured Courses & Learning Paths
+# Memory — Home Page Completion (Hero, Courses, Growth, CTA, Testimonials & Footer)
 
-Last updated: 2026-10-01 06:42
+Last updated: 2026-10-01 08:50
 
 ## What was built
 
-- Created shared TypeScript interfaces in `src/types/index.ts` for `Course`, `RawCourse`, `Category`, `Creator`, `Lesson`, `CourseModule`, and `Review`.
-- Created typed mock data modules:
-  - `src/data/courses.ts`: 6 courses matching `Category.PNG` (Learn Figma from Basic, Build Digital Asset, the Power of Big Data, Balancing Productivity and Life, Mastering Money Management, From Idea to Startup Success).
-  - `src/data/categories.ts`: 6 curated categories (Design, Development, IT & Software, Business, Marketing, Photography) and 18 category discovery filter chips.
-  - `src/data/creators.ts`: author data for "purepearl studio".
-- Created pure accessor and computation functions in `src/lib/courses.ts` and `src/lib/categories.ts`:
-  - Computed lesson count (17), duration formatting ("2 hours 16 mins"), and rating (4.5) derived from module and review structures so UI never duplicates or conflicts.
-- Created reusable UI primitives and sections:
-  - `app/components/ui/Container.tsx`: 1200px max-width container with responsive padding (`px-5 md:px-8`).
-  - `app/components/ui/CourseCard.tsx`: course card with exact Figma overlay pills (`#F6F6F699` / `bg-surface-overlay`, 8px blur, `#4F4F4F` / `text-text-pill`), creator link overlay, avatar stack with lime `26+` counter, price ($25 / lifetime), and Lucide `BarChart` (`strokeWidth={2.8}`) 3-bar ascending signal level icon.
-  - `app/components/home/FeaturedCoursesSection.tsx`: interactive category filter chips with lime active state, "+ More" link, and responsive 3-column course grid.
-  - `app/components/home/LearningPathsSection.tsx`: 6 curated category cards with circular lime icon badges.
-- Updated `app/globals.css` and `context/ui-tokens.md` with new design tokens:
-  - `--color-surface-overlay: rgba(246, 246, 246, 0.6)` (#F6F6F699)
-  - `--color-text-pill: #4f4f4f`
-- Imprinted `CourseCard`, `FeaturedCoursesSection`, and `LearningPathsSection` into `context/ui-registry.md`.
-- Updated `context/progress-tracker.md`.
-- Scaffolded and switched to the official `main` branch tracking `origin/main`.
+- **Foundations & Shared Layout**:
+  - Configured Poppins font, design tokens in `app/globals.css`, and `.hero-grid` pattern.
+  - Built `app/components/layout/Header.tsx` with logo, navigation links, and action buttons.
+  - Built `app/components/ui/Container.tsx` (1200px max width container with responsive horizontal padding).
+
+- **Hero & Partner Logo Strip**:
+  - Built `app/components/home/HeroSection.tsx` with 3D ornament overlay, pill search bar, male student visual, lime semi-circle, and floating stat badges.
+  - Built `app/components/home/PartnerStrip.tsx` with 1440x202 scale using `bg-surface-muted` and partner logo strip.
+
+- **Category Chips & Featured Courses**:
+  - Created shared TypeScript interfaces in `src/types/index.ts` for `Course`, `RawCourse`, `Category`, `Creator`, `Lesson`, `CourseModule`, and `Review`.
+  - Created typed mock data modules: `src/data/courses.ts`, `src/data/categories.ts`, and `src/data/creators.ts`.
+  - Created pure accessor and computation functions in `src/lib/courses.ts` and `src/lib/categories.ts`.
+  - Built `app/components/ui/CourseCard.tsx` with Figma overlay pills, creator link overlay, avatar stack with lime `26+` counter, price ($25 / lifetime), and Lucide `BarChart` (`strokeWidth={2.8}`).
+  - Built `app/components/home/FeaturedCoursesSection.tsx` with interactive category filter chips and responsive 3-column course grid.
+  - Built `app/components/home/LearningPathsSection.tsx` with 6 curated category cards with circular lime icon badges.
+
+- **Platform Growth & Creator Section (Unified Gradient)**:
+  - Built `app/components/home/GrowthAndCreatorSection.tsx` as a single continuous section with `Gradient-background.png`.
+  - Created typed mock data in `src/data/platform-stats.ts` and accessor methods in `src/lib/platform.ts`.
+  - Built sub-components: `MiniCourseCard.tsx`, `LearningProgressCard.tsx`, `TotalRevenueCard.tsx`, `YearToDateCard.tsx`, and `HappyStudentsCard.tsx`.
+  - Built staged compositions: `GrowthImageComposition.tsx` and `CreatorImageComposition.tsx`.
+
+- **Creator Call-to-Action Section**:
+  - Built `app/components/home/CreatorCtaSection.tsx` matching `CTA_Frame.png` with `.hero-grid` and full-bleed `Group 6.png` overlay.
+  - Implemented typed contract in `src/types/index.ts`, mock data in `src/data/cta.ts`, and accessor in `src/lib/cta.ts`.
+
+- **Testimonials Section**:
+  - Added `Testimonial` and `TestimonialsContent` types in `src/types/index.ts`.
+  - Created typed mock data in `src/data/testimonials.ts` and pure accessor in `src/lib/testimonials.ts`.
+  - Built `app/components/ui/TestimonialCard.tsx` and `app/components/home/TestimonialsSection.tsx`.
+
+- **Site Footer Section**:
+  - Added `FooterContent` and `FooterLinkColumn` interfaces in `src/types/index.ts`.
+  - Created typed mock data in `src/data/footer.ts` and accessor in `src/lib/footer.ts`.
+  - Built `app/components/ui/NewsletterForm.tsx` (client component with email validation and "Subscribe" button) and `app/components/layout/Footer.tsx`.
+  - Added `public/assets/footer-logo.png`.
+  - Integrated into `app/page.tsx`.
 
 ## Decisions made
 
-- Mapped the overlay pills in `CourseCard` to dedicated design tokens (`bg-surface-overlay`, `backdrop-blur-[8px]`, `text-text-pill`) to honor the zero-hardcoded-colors rule while matching Figma `#F6F6F699` and `#4F4F4F`.
-- Used Lucide React's `BarChart` (`ChartNoAxesColumnIncreasing`) with `strokeWidth={2.8}` for 3 solid ascending rounded vertical bars, providing vector sharpness across all resolutions without static image dependency.
-- Kept `LearningPathsSection` as a lightweight Server Component and `FeaturedCoursesSection` with a small client leaf for chip filter state.
-- Set up primary integration branch as `main` tracking `origin/main`.
+- Mapped the overlay pills in `CourseCard` to dedicated design tokens (`bg-surface-overlay`, `backdrop-blur-[8px]`, `text-text-pill`) to honor zero-hardcoded-colors rule while matching Figma `#F6F6F699` and `#4F4F4F`.
+- Used Lucide React's `BarChart` (`ChartNoAxesColumnIncreasing`) with `strokeWidth={2.8}` for 3 solid ascending rounded vertical bars.
+- Used a single continuous gradient background for the Growth and Creator sections to ensure visual continuity.
+- Followed recorded architecture decisions: Newsletter button labeled "Subscribe" (fixing design inconsistency where button said "Search").
+- Maintained client/server boundary: `Footer` is a server component containing a client-only leaf for `NewsletterForm`.
+- All content fed through typed mock data in `src/data` and pure accessors in `src/lib`.
 
 ## Problems solved
 
-- Resolved Figma overlay pill styling with exact background opacity and text color tokens.
-- Addressed level badge cellular signal icon with Lucide React `BarChart` (`strokeWidth={2.8}`).
-- Verified `npm run build` with Turbopack and strict TypeScript passing in <3s with 0 errors.
+- Overlay pills opacity and blur styling aligned strictly with tokens.
+- Vector sharpness for cellular level badge without external asset dependency.
+- Edge-to-edge full-bleed background on CTA section without horizontal scrolling on ultrawide monitors.
+- Form validation and accessible error feedback in newsletter subscription.
+- Verified `npm run build` passing with 0 errors.
 - Verified `npm run lint` passing with 0 errors.
 
 ## Current state
 
-- Hero section, Partner Logo Strip, Category Filter Chips & Featured Courses grid (6 cards), and Learning Paths section (6 categories) are complete and live on `main`.
+- Entire Home page (`/`) is complete from Header to Footer (Hero, Partners, Featured Courses, Learning Paths, Growth & Creator, Creator CTA, Testimonials, Footer).
 - Fully responsive across desktop (1440px), tablet (768px), and mobile (375px) with zero horizontal overflow.
+- Working on branch `feat/footer-section`.
 
 ## Next session starts with
 
-- Growth stats section ("Join thousands of learners..."), Creator promotional sections, and Testimonials on the Home page.
+- Building the Course Search / Catalog page (`/courses`) or Course Details page (`/courses/[slug]`).
 
 ## Open questions
 

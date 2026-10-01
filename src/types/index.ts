@@ -95,3 +95,30 @@ export interface TestimonialsContent {
   description: string;
   testimonials: Testimonial[];
 }
+
+export interface FooterLinkColumn {
+  links: { label: string; href: string }[];
+}
+
+export interface FooterContent {
+  newsletterText: string;
+  newsletterDisclaimer: string;
+  linkColumns: FooterLinkColumn[];
+  legalLinks: { label: string; href: string }[];
+  copyrightText: string;
+}
+
+export interface AuthMarketingContent {
+  title: string;
+  description: string;
+}
+
+export interface RegisterPageContent {
+  marketing: AuthMarketingContent;
+  eyebrow: string;
+  formTitle: string;
+  submitButtonText: string;
+  loginPromptText: string;
+  loginLinkText: string;
+}
+
