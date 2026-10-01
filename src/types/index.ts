@@ -74,3 +74,10 @@ export interface Course extends RawCourse {
   rating: number;
   reviewCount: number;
 }
+
+export interface CreatorCta {
+  title: string;
+  description: string;
+  buttonText: string;
+  buttonHref: string;
+}

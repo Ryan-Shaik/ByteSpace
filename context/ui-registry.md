@@ -107,9 +107,9 @@ remove it from this list and add its entry under **Components**.
 - [ ] PartnerStrip
 - [x] FeaturedCourses (category chips + 6 cards)
 - [x] LearningPaths (category tiles)
-- [ ] GrowthSection (stats: students, courses, creators)
-- [ ] CreatorPromo ("Create & Manage Courses Easily")
-- [ ] CreatorCta ("Unlock Your Potential as a Creator")
+- [x] GrowthSection (stats: students, courses, creators)
+- [x] CreatorPromo ("Create & Manage Courses Easily")
+- [x] CreatorCta ("Unlock Your Potential as a Creator")
 - [ ] Testimonials
 
 ### Courses (`src/components/features/courses`)
@@ -222,3 +222,28 @@ Used on: `/`
 **Props:** `categories: Category[]`
 **Pattern notes:**
 - 6 curated learning path cards (Design, Development, IT & Software, Business, Marketing, Photography) linking to `/courses?category=[slug]`. Responsive across 2 cols (mobile), 3 cols (tablet), 6 cols (desktop).
+
+### CreatorCtaSection
+
+File: `app/components/home/CreatorCtaSection.tsx`
+Last updated: 2026-10-01
+Type: server
+Used on: `/`
+
+| Property         | Class |
+| ---------------- | ----- |
+| Background       | `hero-grid`, full bleed overlay: `object-cover object-center` on `/assets/Group 6.png` with `sizes="100vw"` |
+| Border           | None |
+| Border radius    | Button: `rounded-pill` |
+| Text — primary   | Headline: `text-on-brand`, button: `text-on-accent` |
+| Text — secondary | Description: `text-on-brand/80` |
+| Spacing          | Section: `py-16 sm:py-20 lg:py-0 lg:h-[488px]`, button: `px-8 py-3.5 mt-7 sm:mt-8` |
+| Hover state      | Button: `hover:bg-accent-hover` |
+| Shadow           | None |
+| Accent usage     | CTA button: `bg-accent text-on-accent hover:bg-accent-hover` |
+
+**Props:** `cta: CreatorCta`
+**Pattern notes:**
+- Full-width call-to-action banner matching `CTA_Frame.png`. Spans 100% of viewport width without side gaps by utilizing `Group 6.png` directly inside `absolute inset-0` with `object-cover`.
+- Clean semantic heading, token-compliant Poppins typography, and link to `/register`.
+
