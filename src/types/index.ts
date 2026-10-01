@@ -107,3 +107,18 @@ export interface FooterContent {
   legalLinks: { label: string; href: string }[];
   copyrightText: string;
 }
+
+export interface AuthMarketingContent {
+  title: string;
+  description: string;
+}
+
+export interface RegisterPageContent {
+  marketing: AuthMarketingContent;
+  eyebrow: string;
+  formTitle: string;
+  submitButtonText: string;
+  loginPromptText: string;
+  loginLinkText: string;
+}
+
