@@ -81,3 +81,17 @@ export interface CreatorCta {
   buttonText: string;
   buttonHref: string;
 }
+
+export interface Testimonial {
+  id: string;
+  name: string;
+  role: string;
+  avatarUrl: string;
+  quote: string;
+}
+
+export interface TestimonialsContent {
+  heading: string;
+  description: string;
+  testimonials: Testimonial[];
+}
