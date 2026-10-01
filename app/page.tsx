@@ -1,10 +1,11 @@
 import HeroSection from "./components/home/HeroSection";
+import PartnerStrip from "./components/home/PartnerStrip";
 
 export default function HomePage() {
   return (
     <main>
       <HeroSection />
-      {/* More sections (Partner strip, Featured Courses, etc.) will be added next */}
+      <PartnerStrip />
     </main>
   );
 }
