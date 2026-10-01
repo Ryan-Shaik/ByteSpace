@@ -1,4 +1,4 @@
-import { RegisterPageContent } from "@/src/types";
+import { RegisterPageContent, LoginPageContent } from "@/src/types";
 
 export const REGISTER_CONTENT: RegisterPageContent = {
   marketing: {
@@ -12,3 +12,17 @@ export const REGISTER_CONTENT: RegisterPageContent = {
   loginPromptText: "Already have an account?",
   loginLinkText: "Login",
 };
+
+export const LOGIN_CONTENT: LoginPageContent = {
+  marketing: {
+    title: "Sign in with ease",
+    description:
+      "Experience a seamless and efficient sign-in process that grants you instant access to a world of knowledge.",
+  },
+  eyebrow: "Sign In",
+  formTitle: "Welcome Back",
+  submitButtonText: "Sign In",
+  registerPromptText: "New user?",
+  registerLinkText: "Create an account",
+};
+

@@ -122,3 +122,13 @@ export interface RegisterPageContent {
   loginLinkText: string;
 }
 
+export interface LoginPageContent {
+  marketing: AuthMarketingContent;
+  eyebrow: string;
+  formTitle: string;
+  submitButtonText: string;
+  registerPromptText: string;
+  registerLinkText: string;
+}
+
+
