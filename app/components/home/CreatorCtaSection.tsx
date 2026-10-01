@@ -29,7 +29,7 @@ export default function CreatorCtaSection({ cta }: CreatorCtaSectionProps) {
           alt=""
           fill
           priority
-          className="object-cover object-center"
+          className="object-fill"
           sizes="100vw"
         />
       </div>
